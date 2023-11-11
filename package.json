@@ -1,0 +1,22 @@
+{
+  "name": "happy-diwal",
+  "version": "1.0.0",
+  "description": "Wishing Happy Diwali to your apne",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Diwali"
+  ],
+  "author": "Anubhav Singh",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "express-ejs-layouts": "^2.5.1",
+    "mongodb": "^6.2.0",
+    "mongoose": "^8.0.0"
+  }
+}

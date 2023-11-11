@@ -1,0 +1,83 @@
+img {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+  }
+
+  #imgB {
+    position: fixed;
+    top: 4px;
+    right: 4px;
+    z-index: 10000;
+  }
+
+  #dialogBox {
+    position: fixed;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border: 2px dashed rgb(251, 251, 251);
+    background-color: rgba(13, 13, 13, 0.90);
+    text-align: center;
+    color: #FFC847;
+    padding: 20px;
+    padding-top: 40px;
+    height: 400px;
+    width: 600px;
+    transform: rotateX(90deg);
+    cursor: default;
+    transition: .8s;
+  }
+
+  #cover {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: 1;
+    background: rgba(117, 133, 247, 0.3);
+    height: 100vh;
+    width: 100vw;
+    opacity: 0;
+    transition: 1s;
+  }
+
+  @media screen and (max-width: 720px) {
+    #circle:hover {
+      box-shadow: 0 1px 8px rgba(255, 255, 255, 0.5);
+      cursor: pointer;
+    }
+
+    #dialogBox {
+      height: 100%;
+      width: 100%;
+      padding: 0%;
+      border: 0px;
+      padding-top: 80%;
+      background-color: rgba(13, 13, 13, 0.90);
+    }
+
+    #cover {
+      height: 100%;
+      width: 100%;
+    }
+
+    #circle {
+      bottom: 0px;
+      left: -30px;
+    }
+
+    img {
+      position: fixed;
+      top: 4px;
+      left: 4px;
+    }
+
+    #imgB {
+      position: relative;
+      top: 4px;
+      left: 4px;
+      z-index: 10000;
+    }
+  }

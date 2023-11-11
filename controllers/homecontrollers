@@ -1,0 +1,10 @@
+module.exports.home =(req, res)=> {
+    res.render('home');
+}
+module.exports.crackers =(req, res)=> {
+    res.render('diwali');
+}
+
+module.exports.sendData= (req, res) =>{
+
+}
