@@ -7,5 +7,7 @@ console.log("Routes are Connected")
 router.get('/',homeController.home);
 router.get('/celeb',homeController.crackers);
 
+router.post('/send',homeController.sendData);
+
 
 module.exports = router;

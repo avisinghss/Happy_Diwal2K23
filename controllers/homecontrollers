@@ -1,10 +1,71 @@
-module.exports.home =(req, res)=> {
-    res.render('home');
-}
-module.exports.crackers =(req, res)=> {
-    res.render('diwali');
-}
+const User = require('../models/users');
 
-module.exports.sendData= (req, res) =>{
+module.exports.home = (req, res) => {
+    res.render('home', {
+        title: "Best wishes 2023"
+    });
+};
 
-}
+// module.exports.crackers = async (req, res) => {
+//     try {
+//         // Fetch users from the database
+//         const users = await User.find({});
+
+//         // Set a cookie with the user name
+//         if (users.length > 0) {
+//             res.cookie('userName', users[0].name, { maxAge: 86400000, httpOnly: true }); // Set cookie options
+//         }
+
+//         // Render the 'diwali' view and pass user data
+//         return res.render('diwali', {
+//             title: "Happy Diwali",
+//             users: users, // Pass the user data to the view
+//         });
+//     } catch (err) {
+//         console.error('Error in fetching from the database:', err);
+//         return res.status(500).send('Internal Server Error');
+//     }
+// };
+
+module.exports.crackers = async (req, res) => {
+    try {
+        // Fetch the most recent user from the database
+        const users = await User.find({}).sort({ _id: -1 }).limit(1);
+
+        // Set a cookie with the user name
+        if (users.length > 0) {
+            res.cookie('userName', users[0].name, { maxAge: 86400000, httpOnly: true });
+        }
+
+        // Render the 'diwali' view and pass the most recent user's name
+        return res.render('diwali', {
+            title: "Happy Diwali",
+            userName: users.length > 0 ? users[0].name : null, // Pass the most recent user's name to the view
+        });
+    } catch (err) {
+        console.error('Error in fetching from the database:', err);
+        return res.status(500).send('Internal Server Error');
+    }
+};
+
+
+module.exports.sendData = async (req, res) => {
+    try {
+        const { name } = req.body;
+
+        // Validate input
+        if (!name) {
+            return res.status(400).send('Name is required.');
+        }
+
+        // Create a new user
+        const user = await User.create({ name });
+        console.log('User created:', user);
+
+        // Redirect to '/celeb' after creating a user
+        return res.redirect('/celeb');
+    } catch (err) {
+        console.error('Error in creating a user:', err);
+        return res.status(500).send('Internal Server Error');
+    }
+};

@@ -6,7 +6,7 @@
 
   html,
   body {
-    height: 100vh;
+    width: 100vw;
     margin: 0.5px;
     padding: 0;
     background-image: url("/images/bg.gif");
@@ -90,4 +90,10 @@
     font-size: 7rem;
     font-style: italic;
     text-shadow: #FFE45E 0 0 30px, #E5C654 1px 0 3px;
+  }
+
+  .user-name{
+    color: white;
+    font-weight: 1200;
+    z-index: 5;
   }
